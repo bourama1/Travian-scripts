@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Travian Universal Ad & Reward Skipper 2026
 // @namespace    https://github.com/bourama1/Travian-scripts
-// @version      3.0
+// @version      3.1
 // @description  Skips video ads and reward dialogs in Travian Legends
 // @author       bourama1
 // @match        *://*.travian*.*/*
@@ -94,9 +94,9 @@
         // generic Travian modal
     ].join(", ");
 
-    // Text patterns that mean "dismiss this dialog"
+    // Text patterns that mean "dismiss this dialog" or "start the video"
     const DISMISS_RE =
-        /^(skip|claim|reward|close|schließen|fertig|weiter|ok|done|accept|continue|get\s*bonus|production\s*boost)$/i;
+        /^(skip|claim|reward|close|schließen|fertig|weiter|ok|done|accept|continue|get\s*bonus|production\s*boost|watch\s*video|ansehen|video\s*ansehen|regarder|regarder\s*la\s*vidéo|assistir|ver\s*vídeo)$/i;
 
     function tryDismissOverlays() {
         const overlays = document.querySelectorAll(OVERLAY_SELECTORS);

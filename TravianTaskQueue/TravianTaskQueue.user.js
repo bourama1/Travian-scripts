@@ -11,14 +11,14 @@
 // @exclude     *.css
 // @exclude     *.js
 
-// @version     2.0.28
+// @version     2.0.29
 // ==/UserScript==
 
 (function () {
 
 function allInOneTTQ () {
 notRunYet = false;
-var sCurrentVersion = "2.0.28";
+var sCurrentVersion = "2.0.29";
 
 //find out if Server errors
 var strTitle = document.title;
@@ -897,6 +897,10 @@ function checkSetTasks() {
 	if(aTasks == '') {  // no tasks are set
 		_log(2, "CheckSetTasks> No tasks are set. ");
 		// stop checking, it would be pointless. Checking will be restarted when new tasks are set.
+		// MOD: We keep checking for ads even if no tasks are set
+		checkAdReduction();
+
+		/*
 		if(oIntervalReference) {
 			_log(1, "CheckSetTasks> No Tasks are set. Clearing Interval.");
 			window.clearInterval(oIntervalReference);
@@ -906,11 +910,13 @@ function checkSetTasks() {
 			var ttqTimer = $id("ttqReloadTimer");
 			if ( ttqTimer ) ttqTimer.innerHTML = '';
 		}
+		*/
 		_log(1,"CheckSetTasks> End.");
 		bLocked = false;
 		return false;
 	}
 //-- }
+
 	if ( aTasks != "" ) {
 		aTasks = aTasks.split("|");
 		for( tX = 0, tY = aTasks.length ; tX < tY ; ++tX) {
@@ -930,6 +936,8 @@ function checkSetTasks() {
 		}
 	}
 	bLocked = false;
+
+	checkAdReduction();
 
 	tA = getOption("RELOAD_AT", 0, "integer");
 	if ( tA > 0 ) {
@@ -4128,6 +4136,18 @@ if (init) {
 	}
 }
 
+}
+
+function checkAdReduction() {
+	// Only check if we are on village overview pages
+	if (!window.location.pathname.includes('dorf1.php') && !window.location.pathname.includes('dorf2.php')) return;
+	
+	// Look for the "Watch video" button in the building list
+	const adBtn = document.querySelector('.buildingList .videoFeatureButton, .buildingList button.videoButton');
+	if (adBtn && adBtn.offsetParent !== null) {
+		_log(1, "TTQ: Found building reduction ad button. Clicking...");
+		adBtn.click();
+	}
 }
 
 function backupStart () {
