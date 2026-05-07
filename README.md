@@ -12,6 +12,8 @@
 
    [TravianWaveBuilder](https://github.com/bourama1/Travian-scripts/raw/main/TravianWaveBuilder/TravianWaveBuilder.user.js)
 
+   [TravianAdSkipper](https://github.com/bourama1/Travian-scripts/raw/main/TravianAdSkipper/TravianAdSkipper.user.js)
+
 3. The script will be opened in your userscript manager. Click Install.
 
 ## Requirements
