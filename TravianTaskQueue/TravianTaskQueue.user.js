@@ -1,10 +1,9 @@
 // ==UserScript==
 // @name        Travian Task Queue for Travian 4
-// @namespace   https://github.com/adipiciu/Travian-scripts
-// @author      adipiciu (based on TTQ by Risi and further edited by Nevam and then Pimp Trizkit and Serj_LV)
+// @namespace   https://github.com/bourama1/Travian-scripts
+// @author      bourama1 (based on work of adipiciu)
 // @license     GPL version 3 or any later version; http://www.gnu.org/copyleft/gpl.html
 // @description Schedule delayed constructions, upgrades and attacks.
-// @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=56E2JM7DNDHGQ&item_name=TTQ4+script&currency_code=EUR
 // @include     *://*.travian.*
 // @include     *://*/*.travian.*
 // @exclude     *://support.travian.*
@@ -3971,7 +3970,8 @@ function onLoad() {
 	TTQ_registerMenuCommand("Language", promptLang);
 	TTQ_registerMenuCommand(aLangMenuOptions[5], promptReset);
 	TTQ_registerMenuCommand(aLangMenuOptions[9], promptDebug);
-
+	TTQ_registerMenuCommand("Donate", function() { window.open('https://raw.githubusercontent.com/bourama1/Travian-scripts/main/qrcode.png', '_blank'); });
+	}
 	LOG_LEVEL = getOption("DEBUG", 0, "integer");
 
     tA = /.*build\.php.*/i;

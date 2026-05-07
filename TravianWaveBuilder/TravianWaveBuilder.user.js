@@ -1,10 +1,9 @@
 // ==UserScript==
 // @name           Travian wave builder
-// @namespace      https://github.com/adipiciu/Travian-scripts
+// @namespace      https://github.com/bourama1/Travian-scripts
 // @description    Wave builder for Travian Legends and Travian Shores of War
-// @author         adipiciu (based on Travian wave builder 0.5 by Serj_LV)
+// @author         bourama1 (based on work of adipiciu)
 // @license        GPL version 3 or any later version; http://www.gnu.org/copyleft/gpl.html
-// @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=56E2JM7DNDHGQ&item_name=Travian+wave+builder+script&currency_code=EUR
 // @match          https://*.travian.com/build.php*
 
 // @version        2.11
@@ -13,7 +12,7 @@
 function allInOneOpera () {
 
 var version = '2.11';
-var scriptURL = 'https://github.com/adipiciu/Travian-scripts';
+var scriptURL = 'https://github.com/bourama1/Travian-scripts';
 var defInterval = 200;
 var sLang = detectLanguage();
 var langStrings = ["Add attack", "Remove attack", "Move attack up", "Move attack down", "Add multiple attacks (1-12 attacks)", "Interval between attacks, in milliseconds. Minimum interval is 100 ms.", "Attack type", "Interval", "ms"];
@@ -354,7 +353,8 @@ var interval = $e('INPUT',[['type','text'],['value',defInterval],['title',langSt
 var intervaltxt = $ee('SPAN',langStrings[7],[['style','display:inline-block;padding:0 5px;']]);
 var unitTimetxt = $ee('SPAN',langStrings[8],[['style','display:inline-block;padding:0 5px;']]);
 tbl.appendChild($ee('TFOOT',$ee('TR',$em('TD',[intervaltxt,interval,unitTimetxt,sendBtn,
-	$a(' (v'+version+') ',[['href',scriptURL],['target','_blank']])],
+	$a(' (v'+version+') ',[['href',scriptURL],['target','_blank']]),
+	$a(' [Donate]',[['href','https://raw.githubusercontent.com/bourama1/Travian-scripts/main/qrcode.png'],['target','_blank']])],
 	[['colspan',13],['style','background-color: transparent;text-align:center !important;padding:3px;']]))));
 
 build.appendChild(tbl);

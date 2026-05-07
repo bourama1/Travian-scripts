@@ -1,10 +1,9 @@
 // ==UserScript==
 // @name           Travian Resource bar plus
-// @namespace      https://github.com/adipiciu/Travian-scripts
+// @namespace      https://github.com/bourama1/Travian-scripts
 // @description    Shows travian resources (for Travian Legends and Travian Northern Legends)
-// @author         adipiciu (based on Travian Resource bar plus version 2.8.14 by Serj_LV)
+// @author         bourama1 (based on work of adipiciu)
 // @license        GPL version 3 or any later version; http://www.gnu.org/copyleft/gpl.html
-// @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=56E2JM7DNDHGQ&item_name=T4.4+script&currency_code=EUR
 // @include        *://*.travian.*
 // @include        *://*/*.travian.*
 // @exclude     *://support.travian.*
@@ -23,8 +22,9 @@ var version = '2.26.10';
 
 notRunYet = false;
 
-var homepageurl = 'https://github.com/adipiciu/Travian-scripts';
-var scripturl = 'https://github.com/adipiciu/Travian-scripts/raw/main/TravianResourceBarPlus/TravianResourceBarPlus.user.js'
+var homepageurl = 'https://github.com/bourama1/Travian-scripts';
+var scripturl = 'https://github.com/bourama1/Travian-scripts/raw/main/TravianResourceBarPlus/TravianResourceBarPlus.user.js';
+var qrcodeurl = 'https://raw.githubusercontent.com/bourama1/Travian-scripts/main/qrcode.png';
 var bgcolor = ['#66ff66','#ffff4c','#ff5252']; //resource bar colors
 var vHColor = '#777777'; //hints (second name) color
 var cnColors = ['#F8FFD8','#FFE85B','#FF8888','#F0B8FF','#A0F0A0']; //Center Number colors
@@ -9468,7 +9468,7 @@ function displayWhatIsNew () {
 		var footerline = $e('div',[['style','display:table-row;']]);
 		var homepage = $ee('div',$a('Homepage',[['href',homepageurl],['target','_blank']]),[['style','display:table-cell;width:33%;padding:5px;text-align:'+docDir[0]+';']]);
 		var updateBtn = $ee('div',$a('Check for Update',[['href',scripturl],['target','_blank']]),[['style','display:table-cell;width:33%;padding:5px;text-align:'+docDir[1]+';']]);
-		var donate = $ee('div',$a('Donate',[['href','https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=56E2JM7DNDHGQ&item_name=T4.4+script&currency_code=EUR'],['target','_blank']]),[['style','display:table-cell;width:33%;padding:5px;text-align:center;']]);
+		var donate = $ee('div',$a('Donate',[['href',qrcodeurl],['target','_blank']]),[['style','display:table-cell;width:33%;padding:5px;text-align:center;']]);
 		var closeb = $ee('div',$a('&#x2716;',[['style','font-size:140%;float:'+docDir[1]+';']]),[['style','height:15px;padding:10px;']]);
 		header.textContent = "About Travian Resource Bar+";
 		content.innerHTML = "<p><b>Changelog</b></p> <p>Version "+version+" - Apr 11, 2026:</p> <ul><li>Fixed oasis animals scan button in farm lists</li></ul> <p>Version 2.26.9 - Apr 3, 2026:</p> <ul><li>Fixes for the latest Travian update</li></ul> <p>Version 2.26.8 - Mar 12, 2026:</p> <ul><li>Updated the list of servers with rebalanced troops</li></ul> <p>Version 2.26.7 - Feb 21, 2026:</p> <ul><li>Fixed distance calculator for servers with rebalanced troops</li></ul>";
