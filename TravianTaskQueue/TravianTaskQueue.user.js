@@ -176,11 +176,11 @@ function put(url, data, callback, options) {
 function detectLanguage() {
 	var lang = TTQ_getValue(CURRENT_SERVER+"lang","0");
 	if( lang != 0 ) return lang;
-	try { 
-		lang = document.getElementsByName("content-language")[0].getAttribute("content").toLowerCase(); lang = lang.substring(3,5); 
+	try {
+		lang = document.getElementsByName("content-language")[0].getAttribute("content").toLowerCase(); lang = lang.substring(3,5);
 	} catch(e) { lang = "en"; }
 	try {
-		lang = $id("mainLayout").getAttribute("lang").toLowerCase(); lang = lang.substring(3,5); 
+		lang = $id("mainLayout").getAttribute("lang").toLowerCase(); lang = lang.substring(3,5);
 	} catch(e) { lang = "en"; }
 	return lang;
 }
@@ -393,7 +393,7 @@ function initialize() {
 	for( var i = 0; i < uIDs.length; i++ ) {
 		var uID = uIDs[i].split("\/@_");
 		if (uID[0] == uName) { myPlayerID = uID[1]; return true; }
-		if (uID[1] == uName) { myPlayerID = uID[2]; return true; }				
+		if (uID[1] == uName) { myPlayerID = uID[2]; return true; }
 	}
 	get(fullName+'statistics/player', getuId, '');
 	function getuId(httpRequest) {
@@ -402,7 +402,7 @@ function initialize() {
 				var holder = document.createElement('div');
 				holder.innerHTML = httpRequest.responseText;
 				var aV = xpath('//td[contains(@class,"pla")]/a[contains(@href,"profile") and text() = "' + uName + '"]', holder, true);
-				if (aV) { 
+				if (aV) {
 					var uId = aV.href.match(/profile\/(\d+)/)[1];
 					uidcookie += uName +"\/@_"+ uId +"@@_";
 					TTQ_setValue(CURRENT_SERVER + 'TTQ-UID', uidcookie);
@@ -2007,7 +2007,7 @@ function sendbackwithdraw (aTask) {
 function sendbackwithdraw2 (httpRequest,aTask) {
 	_log(2,"sendbackwithdraw2> Begin. aTask = " + aTask);
 	printMsg(aLangStrings[6] + " > 1 > 2<br><br>" + getTaskDetails(aTask));
-	
+
 	if (httpRequest.status == 200 && httpRequest.responseText) {
 		var parser = new DOMParser();
 		var holder = parser.parseFromString(httpRequest.responseText, "text/html");
@@ -2962,7 +2962,7 @@ function handleMerchantRequest2(httpRequest, aTask) {
 			var opts = aTask[3].split("_");
 			sParams = '{"action":"marketPlace","resources":{"lumber":'+opts[2]+',"clay":'+opts[3]+',"iron":'+opts[4]+',"crop":'+opts[5]+'},"destination":{"x":'+opts[0]+',"y":'+opts[1]+'},"runs":1,"useTradeShips":false}';
 			_log(3,"sParams:"+sParams);
-			
+
 			post(fullName+'api/v1/marketplace/resources/send', sParams, handleMerchantRequestConfirmation, aTask);
 			return;
 			var sParams = {};
@@ -3036,7 +3036,7 @@ function handleMerchantRequestConfirmation(httpRequest, options) {
 			return
 			var holder = document.createElement('div');
 			var marketData = JSON.parse(httpRequest.responseText);
-			
+
 			holder.innerHTML = marketData["formular"];
 			var reqVID = aTask[5];
 			if ( reqVID != currentActiveVillage ) switchActiveVillage(currentActiveVillage);
@@ -3979,7 +3979,6 @@ function onLoad() {
 	TTQ_registerMenuCommand(aLangMenuOptions[5], promptReset);
 	TTQ_registerMenuCommand(aLangMenuOptions[9], promptDebug);
 	TTQ_registerMenuCommand("Donate", function() { window.open('https://raw.githubusercontent.com/bourama1/Travian-scripts/main/qrcode.png', '_blank'); });
-	}
 	LOG_LEVEL = getOption("DEBUG", 0, "integer");
 
     tA = /.*build\.php.*/i;
@@ -4001,7 +4000,7 @@ function onLoad() {
 				case 22:	createResearchLinks(tY);
 							break;
 				case 19:	case 20:	case 21:	case 36:
-				case 25:	case 26:	case 29:	case 30:	
+				case 25:	case 26:	case 29:	case 30:
 				case 44:	case 46:	case 48:	case 49:
 							createTrainLinks(tY);
 							break;
@@ -4012,7 +4011,7 @@ function onLoad() {
 				case 17:	setTimeout(createMarketLinks,700);
 							break;
 				case 16:	if( $gc('a2b').length > 0 && ($id('troops') || $gc('troop_details').length > 0) ) createAttackLinks();
-							if( $id('rallyPointFarmList') ) { 
+							if( $id('rallyPointFarmList') ) {
 								setTimeout(createGoldClubBtn,700);
 								setTimeout(createGoldClubBtnAll,700);
 							}
@@ -4136,12 +4135,10 @@ if (init) {
 	}
 }
 
-}
-
 function checkAdReduction() {
 	// Only check if we are on village overview pages
 	if (!window.location.pathname.includes('dorf1.php') && !window.location.pathname.includes('dorf2.php')) return;
-	
+
 	// Look for the "Watch video" button in the building list
 	const adBtn = document.querySelector('.buildingList .videoFeatureButton, .buildingList button.videoButton');
 	if (adBtn && adBtn.offsetParent !== null) {
@@ -4157,6 +4154,8 @@ function backupStart () {
 		else setTimeout(backupStart, 500);
 	}
 }
+
+} // end of allInOneTTQ
 
 var notRunYet = true;
 if( /Gecko/.test(navigator.userAgent) ) allInOneTTQ();
