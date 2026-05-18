@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           Travian wave builder
 // @namespace      https://github.com/bourama1/Travian-scripts
-// @description    Wave builder for Travian Legends and Travian Shores of War
+// @description    Precision wave attack coordinator for Travian Legends. Launch multiple attack waves with millisecond accuracy. Supports all tribes and provides dynamic wave management.
 // @author         bourama1 (based on work of adipiciu)
 // @license        GPL version 3 or any later version; http://www.gnu.org/copyleft/gpl.html
 // @match          https://*.travian.com/build.php*
@@ -106,8 +106,8 @@ function getRandom ( x ) {
 
 function detectLanguage() {
 	var lang = "en-us";
-	try { 
-		lang = $gn("content-language")[0].getAttribute("content").toLowerCase(); 
+	try {
+		lang = $gn("content-language")[0].getAttribute("content").toLowerCase();
 	} catch(e) { }
 	try {
 		lang = $g("mainLayout").getAttribute("lang").toLowerCase();
@@ -245,7 +245,7 @@ function addWave () {
 		nbody.appendChild(nrow);
 		tbl.appendChild(nbody);
 		setTimeout(ok, getRandom(1200));
-		}, function() {setTimeout(ok, getRandom(1200));} 
+		}, function() {setTimeout(ok, getRandom(1200));}
 	);
 }
 
@@ -289,7 +289,7 @@ function sendTroops (x) {
 	if( x == wCount-1 ) {
 		setTimeout(function(){ document.location.href = fullName +'build.php?gid=16&tt=1'; }, getRandom(2000));
 	}
-	ajaxRequest(fullName + a2bURL, "POST", sParams, function() { return function(x) { return logWaves(x,1); }(x+1); }, 
+	ajaxRequest(fullName + a2bURL, "POST", sParams, function() { return function(x) { return logWaves(x,1); }(x+1); },
 		function() { return function(x) { return logWaves(x,0); }(x+1); } );
 }
 

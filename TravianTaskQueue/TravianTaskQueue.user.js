@@ -3,7 +3,7 @@
 // @namespace   https://github.com/bourama1/Travian-scripts
 // @author      bourama1 (based on work of adipiciu)
 // @license     GPL version 3 or any later version; http://www.gnu.org/copyleft/gpl.html
-// @description Schedule delayed constructions, upgrades and attacks.
+// @description    Schedule and automate constructions, upgrades, and attacks in Travian Legends. Includes intelligent village switching and build-time reduction via video ads.
 // @include     *://*.travian.*
 // @include     *://*/*.travian.*
 // @exclude     *://support.travian.*
@@ -459,7 +459,7 @@ if (init) {
 	*  aLangTroops is ripped from rally point upon first load. aLangResources is ripped each load.
 	*  If an array does not appear for your language, TTQ will use the english version instead.
 	*  Words that are removed, and appear as the number zero (0), currently have no translation and the english version is used.
- 	***************************************************************************/
+	***************************************************************************/
 	switch(sLang) {
 	case "ae": //Arabic (U.A.E) by Fahad (updated by Pimp Trizkit)
 	case "eg": //Arabic (Egypt)
@@ -678,7 +678,7 @@ if (init) {
 		aLangStrings = ["Побудувати пізніше", "Розвити пізніше", 0, "Тренувати пізніше", "Запланувати задачу.", "Ми почали будівництво ", 0, 0, " неможливо побудувати.", 0, "Задача запланована.", 0, "Ми не можемо планувати це зараз.", "Помилка", "Заплановані задачі", "Видалити", "Відправити пізніше", "Атака не може бути запланована, оскільки війська не вибрані.", "Ваші війська були відправлені", "Ваші війська не можуть бути відправлені", "Підкріплення", "Атакувати", "Розбійницький набіг", "Какапульти націлені на", "Випадково", "в", "чи через", "секунд", "хвилин", "годин", "днів", "Розвідати ресурси та військо супротивника", "Розвідати оборонні споруди та військо супротивника", "Відсутнє", "Атака неможе бути запланована бо немає цілі.", "Поле №.", "Сортувати:", "тип ", "час ", "ціль ", "настройки ", "селище "];
 		break;
 
- 	case "vn": //Vietnamese by botayhix (Updated by PT)
+	case "vn": //Vietnamese by botayhix (Updated by PT)
 		aLangTasks = ["Xây dựng công trình", "Nâng cấp", "Tấn Công", "Nghiên cứu", "Cướp Bóc"];
 		aLangStrings = ["Xây Dựng Sau", "Nâng cấp sau", 0, "Nghiên cứu sau", "Kế hoạch", "Bắt đầu xây dựng ", 0, 0, " Không thể xây dựng.", 0, "Nhiệm vụ trong kế hoạch.", 0, "Chúng ta không thể thực hiện kế hoạch bây giờ.", 0, "Kế hoạch nhiệm vụ", "Xoá", "Gửi Sau", "Không có quân nào được chọn.", "Quân của bạn được gửi đến", "Quân của bạn không được gửi đi", "Tiếp viện", "Tấn Công", "Cướp bóc", "Máy bắn đá tấn công vào", "Ngẫu nhiên", "Tại", "Hoặc sau đó", "Giây", "Phút", "Giờ", "Ngày", "Do thám tài nguyên và quân đội", "Do thám quân đội và phòng thủ", "Khoảng cách", "Cuộc tấn công không thể thực hiện do đích đến không đúng.", "Vị trí.", 0, "Kiểu_ ", "thời gian ", "Mục tiêu: ", "Lựa chọn ", "Làng_ ", 0, "Xoá history", "Bắt đầu thực hiện ", " Không thể thực hiện."];
 		break;
@@ -2233,7 +2233,7 @@ function attack3(httpRequest,aTask){
 				var tSelect = bld.getElementsByTagName('select');
 				var okBtn = holder.getElementsByClassName('rallyPointConfirm');
 				var sOnclick = okBtn[0].getAttribute('onclick');
-	       		var checkSum = sOnclick.split(';')[1].split('value = \'')[1].split('\'')[0];
+			var checkSum = sOnclick.split(';')[1].split('value = \'')[1].split('\'')[0];
 				for (q = 0 ; q < tSelect.length ; ++q) {
 					t = tSelect[q].name;
 					if ( /kata\W/.test(t) ) {

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           Travian Resource bar plus
 // @namespace      https://github.com/bourama1/Travian-scripts
-// @description    Shows travian resources (for Travian Legends and Travian Northern Legends)
+// @description    Advanced resource management dashboard for Travian Legends. Tracks production, warehouse capacity, and fill times. Includes battle analyzer, crop finder, and construction tips.
 // @author         bourama1 (based on work of adipiciu)
 // @license        GPL version 3 or any later version; http://www.gnu.org/copyleft/gpl.html
 // @include        *://*.travian.*
@@ -310,7 +310,7 @@ DICT = {
 		auto : "авто.",
 		info : "Общая информация",
 		yourrace : "Ваш народ",
- 		sspeed : "Скорость сервера",
+		sspeed : "Скорость сервера",
 		sspeedh : "0 - авто, 1 (1x), 2 (2x), 3 (3x или скоростной), ...",
 		speedart : "Артефакт скорости",
 		racelist : ['Римляне','Германцы','Галлы','Природа','Натары','Египтяне','Гунны','Спартанцы','Викинги'],
@@ -416,7 +416,7 @@ DICT = {
 		auto : "авто.",
 		info : "Загальна інформація",
 		yourrace : "Ваш народ",
- 		sspeed : "Швидкість сервера",
+		sspeed : "Швидкість сервера",
 		sspeedh : "0 - авто, 1 (1x), 2 (2x), 3 (3x або швидкісний), ...",
 		speedart : "Артефакт швидкості",
 		racelist : ['Римляни','Тевтонці','Галли','Природа','Натари','Єгиптяни','Гунни','Спартанці','Вікінги'],
@@ -1067,7 +1067,7 @@ DICT = {
 		color4 : "Completamente Evoluido"
 	},
 	bg: { // Bulgarian language, thx Dushevadeca
-		// ingame messages 
+		// ingame messages
 		ok : "Потвърди",
 		cancel : "Отмени",
 		close : "Затвори",
@@ -2227,7 +2227,7 @@ DICT = {
 		sendres : "εμφάνισε «στείλε ύλες/στρατεύματα» εικονίδια",
 		sendmess : "εμφάνισε «στείλε μήνυμα» εικονίδιο",
 		analyzer : "World analyzer",
-		bigicon : "εμφάνισε πλατεία συγκέντρωσης ειδών",	
+		bigicon : "εμφάνισε πλατεία συγκέντρωσης ειδών",
 		addvtable : "Εμφάνιση επιπλέον πίνακα χωριών",
 		addvtableo : ['ανενεργό','ενεργό','κολλημένο'],
 		opennote : "άνοιξε αυτόματα σημειωματάριο",
@@ -2721,7 +2721,7 @@ function getUserID() {
 			var ad = ajaxNDIV(ajaxResp);
 			var aV = $xf('//td[contains(@class,"pla")]/a[contains(@href,"profile") and text() = "' + uName + '"]', 'f', ad);
 			ad = null;
-			if (aV) { 
+			if (aV) {
 				var uId = aV.href.match(/profile\/(\d+)/)[1];
 				uidcookie += uName +"\/@_"+ uId +"@@_";
 				RB_setValue(crtName + '-TRBP-UID', uidcookie);
@@ -2923,7 +2923,7 @@ acss = "table#"+allIDs[0]+" {width:100%; border-collapse:collapse; font-size:8pt
 	"span."+allIDs[29]+" { visibility:hidden; display:none; }" +
 	"."+allIDs[42]+" { border: 1px solid rgba(0,0,0,.7); text-align: center; border-radius: 50%; width: 21px; height: 21px; line-height: 23px; position: absolute; }" +
 	"table#"+allIDs[31]+" td a {color:black;font-weight:normal;}" +
- 	"."+allIDs[32]+" { padding:0px 2px;cursor:pointer;height:11px;width:12px;background: url("+img_hide+") no-repeat 0px 0px; }" +
+	"."+allIDs[32]+" { padding:0px 2px;cursor:pointer;height:11px;width:12px;background: url("+img_hide+") no-repeat 0px 0px; }" +
 	"."+allIDs[33]+" { height:14px !important;width:18px !important;background: url("+img_car+") no-repeat 0px 0px !important; }" +
 	"."+allIDs[34]+" { height:14px !important;width:18px !important;background: url("+img_def+") no-repeat 0px 0px !important; }" +
 	"."+allIDs[35]+" { height:14px;width:18px;background: url("+img_att+") no-repeat 0px 0px !important; }" +
@@ -3128,7 +3128,7 @@ var dragMaster = (function() {
 		}
 	}
 	function mouseMove(e){
-		var ev = touchFL?e.touches[0]:e; 
+		var ev = touchFL?e.touches[0]:e;
 		if (mouseDownAt) if (Math.abs(mouseDownAt.x-ev.pageX)<10 && Math.abs(mouseDownAt.y-ev.pageY)<10) return;
 		with(dragObject.style) {
 			position = 'absolute';
@@ -3297,7 +3297,7 @@ function needed_show( base ) {
 	return beforeThis;
 }
 
-function neededResAdd () {	
+function neededResAdd () {
 	function addNPC( base ) {
 		var gold = $gc('gold',base);
 		if( gold.length > 0 ) {
@@ -3630,7 +3630,7 @@ function marketSend () {
 		RB.wantsMem = [0,0,0,0,0,0,0,0,0,0];
 		for( var i=0; i<4; i++ )
 			if( isFinite(parseInt(rxI[i+1].value)) ) RB.wantsMem[i] = parseInt(rxI[i+1].value);
- 		RB.wantsMem[4] = xy2id(xx,yy);
+		RB.wantsMem[4] = xy2id(xx,yy);
 		saveCookie('Mem', 'wantsMem');
 		alert( "Saved: "+ RB.wantsMem[0] +" | "+ RB.wantsMem[1] +" | "+ RB.wantsMem[2] +" | "+ RB.wantsMem[3] );
 	}
@@ -3969,9 +3969,9 @@ function marketTradeRoutes() {
 		}
 		merUpd();
 	}
-	for (var i = 1; i < 5; i++ ) { 
+	for (var i = 1; i < 5; i++ ) {
 		var inp = $gn("r"+i,routesForm)[0];
-		inp.addEventListener('input', merUpd, false); 
+		inp.addEventListener('input', merUpd, false);
 		var divC = $e('DIV',[['style','margin:2px auto;font-size:24px;pointer-events:auto;']]);
 		var refM = $a(' - ',[["id","rbmin"],['href',jsVoid]]);
 		refM.addEventListener('click', mofLinkU, false);
@@ -4058,7 +4058,7 @@ function marketSummReal () {
 		var extRT = new Array();
 		for (i = 0; i < aT.length; i++) {
 			if (aT[i].classList.contains('history') || aT[i].classList.contains('return')) { aT[i].setAttribute('style','display:none;'); }
-			if (aT[i].classList.contains('history') || aT[i].classList.contains('return')) continue;	
+			if (aT[i].classList.contains('history') || aT[i].classList.contains('return')) continue;
 			if (aT[i].classList.contains('predicted')) {
 				// get time to go
 				var timerEl = $gc('timer',aT[i]);
@@ -4365,7 +4365,7 @@ function resSendOnMap () {
 		}
 		}
 	};
-	const observer = new MutationObserver(mutationCallback);		  
+	const observer = new MutationObserver(mutationCallback);
 	observer.observe(document.body, { childList: true, subtree: true });
 }
 
@@ -7475,7 +7475,7 @@ function buildDispatcher () {
 			  }
 			}
 		};
-		const observer = new MutationObserver(mutationCallback);		  
+		const observer = new MutationObserver(mutationCallback);
 		observer.observe(document.body, { childList: true, subtree: true });
 	} else if( gid == 'gid15' ) {
 		demolishSave();
@@ -8155,7 +8155,7 @@ function detectAttack () {
 			lastTimerB = timerNum+1;
 		}
 		if( RB.attackList.length < 2 ) {
-			aDv.innerHTML = 'No attack'; 
+			aDv.innerHTML = 'No attack';
 		} else {
 			aDv.innerHTML = '';
 		}
@@ -8241,9 +8241,9 @@ function detectAttack () {
 			var ad = ajaxNDIV(ajaxResp);
 			var move = $xf('.//div[contains(@class,"listEntry village") and contains(@class,"attack")]','f',ad);
 			ad = null;
-			if (move) { 
+			if (move) {
 				triggerAlarm();
-				return true; 
+				return true;
 			} else { noAttack(); }
 		}, showError);
 	}
@@ -8756,7 +8756,7 @@ function saveHeroPower () {
 			saveCookie( 'DictFL', 'dictFL' );
 		}
 	}
-	
+
 }
 
 function saveHeroMount () {
@@ -8772,7 +8772,7 @@ function saveHeroMount () {
 			});
 		});
 		observer.observe(hr, { childList: true, subtree: true });
-	
+
 		function checkHeroMount () {
 			if( hr.hasChildNodes() ) {
 				RB.dictFL[18] = 1;
@@ -8842,7 +8842,7 @@ function goldClubInfo () {
 		for( var t=0; t < ac.snapshotLength; t++ ) {
 			var inp = $gt('INPUT',ac.snapshotItem(t))[0];
 			if (inp.checked != chkbox.checked ) inp.click();
-		}	
+		}
 	}
 	function checkGreen () {
 		checkClass('attack_won_withoutLosses_small',this);
@@ -9182,14 +9182,14 @@ function messagesTopButtons () {
 			var markasreadButt = buttons[i];
 		}
 		if (buttons[i].name == 'delete') {
-			var delButt = buttons[i];	
+			var delButt = buttons[i];
 		}
 		if (buttons[i].name == 'archive') {
 			var archiveButton = buttons[i];
 		}
 	}
 	if (buttons.length > 0) {
-		if ( archiveButton ) { 
+		if ( archiveButton ) {
 			var newArcAbove = archiveButton.cloneNode(true);
 			ltr ? newArcAbove.style.marginLeft = "4px" : newArcAbove.style.marginRight = "4px";
 			messagesForm.prepend(newArcAbove);
@@ -9198,7 +9198,7 @@ function messagesTopButtons () {
 			var newDelAbove = delButt.cloneNode(true);
 			ltr ? newDelAbove.style.marginLeft = "4px" : newDelAbove.style.marginRight = "4px";
 			messagesForm.prepend(newDelAbove);
-		}	
+		}
 		if ( markasreadButt ) {
 			var newMarkAbove = markasreadButt.cloneNode(true);
 			messagesForm.prepend(newMarkAbove);
@@ -9458,8 +9458,8 @@ function createSemiLargerMapHTML() {
 }
 
 function displayWhatIsNew () {
-	if ($g('whatsnew')) { 
-		$g("whatsnew").style.visibility = "visible"; return; } 
+	if ($g('whatsnew')) {
+		$g("whatsnew").style.visibility = "visible"; return; }
 	else {
 		var box = $e('div',[['id','whatsnew'],['style','width:400px;position:fixed;top:50%;left:50%;transform: translate(-50%,-50%);color:black;background-color:'+rbpBckColor+';padding:5px 5px;border-radius:1em;z-index:999;opacity:0.95;']]);
 		var header = $e('div',[['style','height:35px;font-size:130%;font-weight:bold;text-align:center;']]);
@@ -9533,7 +9533,7 @@ function displayWhatIsNew () {
 						if (T4_Variables.playableTribeIds[2]) RB.Setup[47] = 2; //Romans, Gauls, Teutons
 						if (T4_Variables.playableTribeIds[4]) RB.Setup[47] = 1; //Huns, Egyptians, Spartans, Vikings
 					}
-					
+
 				}
 				if (RB.Setup[48] == 0) { RB.Setup[48] = T4_Variables.Map.Size.width; }
 				if (RB.Setup[50] == 0) { RB.Setup[50] = T4_Variables.feature_flags.travelOverTheWorldEdge ? 1 : 2; }
@@ -9640,7 +9640,7 @@ function displayWhatIsNew () {
 		}
 		}
 	};
-	const observer = new MutationObserver(mutationCallback);		  
+	const observer = new MutationObserver(mutationCallback);
 	observer.observe($g('sidebarAfterContent'), { childList: true, subtree: true });
 	if( RB.Setup[14] > 0 ) showDorf1();
 	if( RB.Setup[12] > 0 ) showLinks();
