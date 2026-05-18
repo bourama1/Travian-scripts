@@ -51,12 +51,6 @@ Seamless build-time reduction.
 
 ---
 
-## 🛡 Recommended GitHub Topics
-To help more players find this repository, we recommend adding the following topics to the repository settings:
-`travian`, `travian-legends`, `userscript`, `tampermonkey`, `greasemonkey`, `game-automation`, `travian-bot`, `javascript`, `violentmonkey`, `travian-scripts`.
-
----
-
 ## ☕ Support the Project
 
 If these scripts helped you dominate the server, consider buying me a coffee!
